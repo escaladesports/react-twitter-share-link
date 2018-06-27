@@ -14,8 +14,8 @@ class TwitterShare extends React.Component {
 			})
 		}
 	}
-	componentDidReceiveProps() {
-		if (this.props.link) {
+	componentDidUpdate(prevProps) {
+		if (this.props.link !== prevProps.link) {
 			this.setState({
 				link: this.props.link
 			})
