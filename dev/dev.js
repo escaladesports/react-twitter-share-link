@@ -1,8 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Src from '../src'
+import Share from '../src'
 
 render(
-	<Src />,
+	<Share>{link => (
+		<div>{link}</div>
+	)}</Share>,
 	document.querySelector('#container')
 )
