@@ -30,4 +30,13 @@ import ShareLink from 'react-twitter-share-link'
 </ShareLink>
 ```
 
-If you don't pass in a `link` prop, it will use the current page (`window.location.href`).
+## ShareLink Properties
+
+| Name              |  Type             | Default                | Description |
+|-------------------|-------------------|------------------------|-------------|
+| link              | string            | document.location.href | link the tweet will reference to |
+| text              | string            | null                   | text before the link |
+| hashtags          | string / string[] | null                   | hashtags with comma or space separated string "twitter,twitterdev" / "twitter twitterdev" or array ["twitter","twitterdev"] |
+| via               | string            | null                   | via references a user account at the end of the tweet (e.g "via @twitter") |
+| related           | string / string[] | null                   | related accounts with comma or space separated string "twitter,twitterdev" / "twitter twitterdev" or array ["twitter","twitterdev"] |
+| customQueryParams | string / object   | null                   | ability to add custom query params to the tweet url  |
