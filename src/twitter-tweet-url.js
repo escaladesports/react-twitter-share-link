@@ -20,6 +20,12 @@ export class TwitterTweetUrl {
 
 		this.options = Object.assign({}, defaultTwitterUrlOptions, options);
 
+		// Sometimes the defaultTwitterUrlOptions will be defined before the browser is ready which evaluates the link to
+		// null, and if the link is null the toUrl() call won't work. So this is to make sure the options.link is defined.
+		if (_.isNil(this.options.link)) {
+			this.options.link = document.location.href;
+		}
+
 		if (!_.isString(baseUrl)) {
 			throw new Error('Provided baseUrl can only be of type string');
 		}
@@ -192,7 +198,7 @@ export class TwitterTweetUrl {
 		} else if (other.trim() !== '') {
 			url += `?${other}`;
 		}
-		
+
 		return url;
 	}
 }
