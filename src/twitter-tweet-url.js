@@ -2,7 +2,7 @@ import _ from 'lodash';
 import queryString from 'query-string';
 
 export const defaultTwitterUrlOptions = {
-	link: document.location.href,
+	link: typeof document !== 'undefined' ? document.location.href : null,
 	text: null,
 	hashtags: null,
 	via: null,
@@ -22,7 +22,7 @@ export class TwitterTweetUrl {
 
 		// Sometimes the defaultTwitterUrlOptions will be defined before the browser is ready which evaluates the link to
 		// null, and if the link is null the toUrl() call won't work. So this is to make sure the options.link is defined.
-		if (_.isNil(this.options.link)) {
+		if (_.isNil(this.options.link) && typeof document !== 'undefined') {
 			this.options.link = document.location.href;
 		}
 
